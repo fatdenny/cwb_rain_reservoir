@@ -37,6 +37,7 @@ function transformToAssocArray( prmstr ) {
 }
 
 </script>
+<script src="https://www.cwb.gov.tw/Data/js/rainfall/RainfallImg_Day.js"></script>
 
 <div>
 
@@ -127,13 +128,27 @@ function transformToAssocArray( prmstr ) {
 <script>
     
   var get_env_param = getSearchParameters();
-  var link = get_env_param['link'];
-  if (link !== null && link != undefined) {
+  var day = get_env_param['day'];
+  var img = "";
+  if (day === null || day == undefined) {
     document.getElementById("link").src = link;
-    document.getElementById("link").style.display = "block";
-    document.getElementById("map").style.display = "block";
-    document.getElementById("svg").style.display = "block";
+    img = RainDay["Tab0"]["Day0"][0]["img"];
+  } else {
+    if (day == 0) {
+      img = RainDay["Tab0"]["Day0"][0]["img"];
+    }
+    if (day == 1) {
+      img = RainDay["Tab0"]["Day1"][0]["img"];
+    }
+    if (day == 2) {
+      img = RainDay["Tab0"]["Day2"][0]["img"];
+    }
+ 
   }
+  document.getElementById("link").src = "https://www.cwb.gov.tw/Data/rainfall/" + img + ".jpg";
+  document.getElementById("link").style.display = "block";
+  document.getElementById("map").style.display = "block";
+  document.getElementById("svg").style.display = "block";    
 </script>
 </div> 
 </body>
