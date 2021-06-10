@@ -41,9 +41,15 @@ function transformToAssocArray( prmstr ) {
 
 <div>
 
-<img id="link" style="display: none; width: 1230px; height: 1380px;">
-<img id="map" style="display:none; position: absolute;left: 212px;top: 205px;z-index: 1;animation:fade 1000ms infinite; " src="./taiwan_s5.png">
-<svg id="svg" width="1200" height="1300" xmlns="http://www.w3.org/2000/svg" style="display: none; position: absolute; left: 0px;top: 0px;z-index: 2;">
+<div style="display: block; position: absolute; z-index:5; font-size:large;">
+<p><a href="?day=0"> 今天 </a></p>
+<p><a href="?day=1"> 昨天 </a></p>
+<p><a href="?day=2"> 前天 </a></p>
+</div>
+
+<img id="link" style="display: none; position: absolute; width: 1230px; height: 1380px; z-index: 1;">
+<img id="map" style="display:none; position: absolute;left: 212px;top: 205px; z-index: 2;animation:fade 1000ms infinite; " src="./taiwan_s5.png">
+<svg id="svg" width="1200" height="1300" xmlns="http://www.w3.org/2000/svg" style="display: none; position: absolute; left: 0px;top: 0px; z-index: 3;">
 
 <!-- right -->
  <g>
