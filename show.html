@@ -1,3 +1,4 @@
+
 <html>
 <head>
 <meta name="author" content="Fat Denny">
@@ -9,7 +10,7 @@
     50% { opacity: 0.4; }
     to { opacity: 1.0; }
 }
-
+ 
 @-webkit-keyframes fade {
     from { opacity: 1.0; }
     50% { opacity: 0.4; }
@@ -18,12 +19,30 @@
 
 </style>
 </head>
-<body>
-<div>
-<img style="width: 1230px; height: 1380px; " src="$link"><br>
-<img style="position: absolute;left: 212px;top: 205px;z-index: 1;animation:fade 1000ms infinite; " src="./taiwan_s5.png">;
+<body> 
+<script>
+function getSearchParameters() {
+    var prmstr = window.location.search.substr(1);
+    return prmstr != null && prmstr != "" ? transformToAssocArray(prmstr) : {};
+}
 
-<svg width="1200" height="1300" xmlns="http://www.w3.org/2000/svg" style="position: absolute; left: 0px;top: 0px;z-index: 2;">
+function transformToAssocArray( prmstr ) {
+    var params = {};
+    var prmarr = prmstr.split("&");
+    for ( var i = 0; i < prmarr.length; i++) {
+        var tmparr = prmarr[i].split("=");
+        params[tmparr[0]] = tmparr[1];
+    }
+    return params;
+}
+
+</script>
+
+<div>
+
+<img id="link" style="display: none; width: 1230px; height: 1380px;">
+<img id="map" style="display:none; position: absolute;left: 212px;top: 205px;z-index: 1;animation:fade 1000ms infinite; " src="./taiwan_s5.png">
+<svg id="svg" width="1200" height="1300" xmlns="http://www.w3.org/2000/svg" style="display: none; position: absolute; left: 0px;top: 0px;z-index: 2;">
 
 <!-- right -->
  <g>
@@ -82,8 +101,6 @@
 <line stroke-width="1" stroke="#ff0000" stroke-linejoin="undefined" id="svg_1" y2="600" x2="200" y1="710" x1="405"></line>
 <text xml:space="preserve" text-anchor="end" font-family="Noto Sans JP" font-size="20" id="svg_2" y="600" x="200" stroke-width="1" stroke="#ff0000" fill="#ff0000">湖山水庫集水區</text>
 
-#ff0000" fill="#ff0000">湖山水庫集水區</text>
-
 <line stroke-width="3" stroke="#ffffff" stroke-linejoin="undefined" id="svg_1" y2="680" x2="200" y1="775" x1="365"></line>
 <line stroke-width="1" stroke="#ff0000" stroke-linejoin="undefined" id="svg_1" y2="680" x2="200" y1="775" x1="365"></line>
 <text xml:space="preserve" text-anchor="end" font-family="Noto Sans JP" font-size="20" id="svg_2" y="680" x="200" stroke-width="1" stroke="#ff0000" fill="#ff0000">蘭潭,仁義潭水庫</text>
@@ -107,6 +124,18 @@
 
  </g>
 </svg>
-</div>
+<script>
+    
+  var get_env_param = getSearchParameters();
+  var link = get_env_param['link'];
+  if (link !== null && link != undefined) {
+    document.getElementById("link").src = link;
+    document.getElementById("link").style.display = "block";
+    document.getElementById("map").style.display = "block";
+    document.getElementById("svg").style.display = "block";
+  }
+</script>
+</div> 
 </body>
 </html>
+
